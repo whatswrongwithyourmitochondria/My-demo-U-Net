@@ -12,3 +12,14 @@ tensorflow = "~2.8.0"
 
 [tool.poetry.dev-dependencies]
 
+[tool.setuptools.packages.find]
+py-modules = []
+where = ["."] 
+include = []
+exclude = []
+namespaces = false 
+
+[build-system]
+requires = ["poetry_core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
