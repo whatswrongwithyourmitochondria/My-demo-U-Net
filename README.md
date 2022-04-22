@@ -9,6 +9,7 @@
 
 
 **Task 1**
+
 **Follow these steps to run the project:**
  1. Go to My-demo directory
  2. Activate virtual envirnonment with *poetry run*
@@ -18,6 +19,7 @@
  
  
 **Task 2**
+
 **To be able to build a package from the code:**
 1. *poetry build*
 2. cd ./dist
