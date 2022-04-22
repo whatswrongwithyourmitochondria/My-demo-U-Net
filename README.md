@@ -10,6 +10,6 @@
 **Follow these steps to run the project:**
  1. Go to My-demo directory
  2. Activate virtual envirnonment with *poetry run*
- 3. Run python main.py (can be different according to your OS)
+ 3. Run python demo.py (can be different according to your OS)
  4. You will see the result of portrait drawing based on the test photo
  5. Then press *exit* to leave the shell
