@@ -7,6 +7,8 @@
 - to install *poetry* according to your OS visit: https://python-poetry.org/docs/
 - if you install *poetry* using **pip**, be aware that it will also install Poetry’s dependencies which might cause conflicts with other packages
 
+
+**Task 1**
 **Follow these steps to run the project:**
  1. Go to My-demo directory
  2. Activate virtual envirnonment with *poetry run*
@@ -14,6 +16,8 @@
  4. You will see the result of portrait drawing based on the test photo
  5. Then press *exit* to leave the shell
  
+ 
+**Task 2**
 **To be able to build a package from the code:**
 1. *poetry build*
 2. cd ./dist
