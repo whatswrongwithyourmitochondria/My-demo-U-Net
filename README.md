@@ -13,3 +13,9 @@
  3. Run python demo.py (can be different according to your OS)
  4. You will see the result of portrait drawing based on the test photo
  5. Then press *exit* to leave the shell
+ 
+**To be able to build a package from the code:**
+1. *poetry build*
+2. cd ./dist
+3. pip install <source file> (pip install demo-0.1.0.tar.gz)
+4. to watch demo you can run *python demo.py*
