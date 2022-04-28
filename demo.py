@@ -15,8 +15,8 @@ def get_args():
 
     parser.add_argument("--device", type=int, default=0)
     parser.add_argument("--movie", type=str, default=None)
-    parser.add_argument("--width", help='cap width', type=int, default=640)
-    parser.add_argument("--height", help='cap height', type=int, default=360)
+    parser.add_argument("--width", help="cap width", type=int, default=640)
+    parser.add_argument("--height", help="cap height", type=int, default=360)
 
     parser.add_argument(
         "--model",
@@ -26,7 +26,7 @@ def get_args():
     parser.add_argument(
         "--input_size",
         type=str,
-        default='512,512',
+        default="512,512",
     )
 
     args = parser.parse_args()
@@ -45,27 +45,27 @@ def run_inference(interpreter, input_size, image):
     mean = [0.485, 0.456, 0.406]
     std = [0.229, 0.224, 0.225]
     x = (x / 255 - mean) / std
-    x = x.reshape(-1, input_size[0], input_size[1], 3).astype('float32')
-
+    x = x.reshape(-1, input_size[0], input_size[1], 3).astype("float32")
 
     # Inference
     input_details = interpreter.get_input_details()
-    interpreter.set_tensor(input_details[0]['index'], x)
+    interpreter.set_tensor(input_details[0]["index"], x)
     interpreter.invoke()
 
     output_details = interpreter.get_output_details()
-    result_map = interpreter.get_tensor(output_details[0]['index'])
+    result_map = interpreter.get_tensor(output_details[0]["index"])
 
     # Post process
     result_map = np.array(result_map).squeeze()
-    result_map = (1 - result_map)
+    result_map = 1 - result_map
     min_value = np.min(result_map)
     max_value = np.max(result_map)
     result_map = (result_map - min_value) / (max_value - min_value)
     result_map *= 255
-    result_map = result_map.astype('uint8')
+    result_map = result_map.astype("uint8")
 
     return result_map
+
 
 def ResizeWithAspectRatio(image, width=None, height=None, inter=cv.INTER_AREA):
     dim = None
@@ -93,7 +93,7 @@ def main():
         cap_device = args.movie"""
 
     model_path = args.model
-    input_size = [int(i) for i in args.input_size.split(',')]
+    input_size = [int(i) for i in args.input_size.split(",")]
 
     # Initialize video capture
     """cap = cv.VideoCapture(cap_device)
@@ -115,35 +115,38 @@ def main():
             break"""
         imgUMat = cv.imread(image)
 
-        result_map = run_inference(
-            interpreter,
-            input_size,
-            "img/portrait.jpg"
-        )
+        result_map = run_inference(interpreter, input_size, "img/portrait.jpg")
         elapsed_time = time.time() - start_time
 
         # Inference elapsed time
         elapsed_time_text = "Elapsed time: "
         elapsed_time_text += str(round((elapsed_time * 1000), 1))
-        elapsed_time_text += 'ms'
-        cv.putText(imgUMat, elapsed_time_text, (10, 30), cv.FONT_HERSHEY_SIMPLEX,
-                   0.7, (0, 255, 0), 1, cv.LINE_AA)
+        elapsed_time_text += "ms"
+        cv.putText(
+            imgUMat,
+            elapsed_time_text,
+            (10, 30),
+            cv.FONT_HERSHEY_SIMPLEX,
+            0.7,
+            (0, 255, 0),
+            1,
+            cv.LINE_AA,
+        )
 
         # Map Resize
-        debug_image = cv.resize(result_map,
-                                dsize=(imgUMat .shape[1], imgUMat.shape[0]))
+        debug_image = cv.resize(result_map, dsize=(imgUMat.shape[1], imgUMat.shape[0]))
 
         image_result = ResizeWithAspectRatio(debug_image, width=600)
         image = ResizeWithAspectRatio(imgUMat, width=600)
-        cv.imshow('U-2-Net Original', image)
-        cv.imshow('U-2-Net Result', image_result)
+        cv.imshow("U-2-Net Original", image)
+        cv.imshow("U-2-Net Result", image_result)
         key = cv.waitKey(1)
         if key == 27:  # ESC
             break
 
-    #cap.release()
+    # cap.release()
     cv.destroyAllWindows()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

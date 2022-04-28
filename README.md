@@ -19,3 +19,12 @@
 2. cd ./dist
 3. pip install <source file> (pip install demo-0.1.0.tar.gz)
 4. to watch demo you can run *python demo.py*
+
+**To be able to build a package from the code:**
+
+1. poetry build
+2. cd ./dist
+3. pip install (pip install demo-0.1.0.tar.gz)
+4. to watch demo you can run python demo.py
+
+**USE** *pip install git+https://github.com/whatswrongwithyourmitochondria/My-demo* to install a package from the console
