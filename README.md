@@ -26,16 +26,21 @@
 3. pip install <source file> (pip install demo-0.1.0.tar.gz)
 4. to watch demo you can run *python demo.py*
 
-<<<<<<< HEAD
-**To be able to build a package from the code:**
-
-1. poetry build
-2. cd ./dist
-3. pip install (pip install demo-0.1.0.tar.gz)
-4. to watch demo you can run python demo.py
-
-**USE** *pip install git+https://github.com/whatswrongwithyourmitochondria/My-demo* to install a package from the console
-=======
 **USE** *pip install git+https://github.com/whatswrongwithyourmitochondria/My-demo* 
 to install a package from the console 
->>>>>>> d02a1105d3a2896754c6213e355325465cf4131d
+
+**Task 3**
+
+ - Styling tools such as *black* and *pylint* were added.
+ - *pre-commit* tool is used while making commits and has been configured to use styling tools mentioned above. 
+
+ - to install all the necessary packages, run *poetry install*
+
+**Before commit**
+
+ * to format the code with the help of *black* tool, run *black demo.py*
+ * to check the list of errors with the help of *pylint* tool, run *pylint demo.py*
+
+ After you fix all the errors, make *git add / git commit* commands again. 
+
+
