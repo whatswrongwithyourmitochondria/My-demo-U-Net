@@ -3,15 +3,22 @@
 """importing modules"""
 import copy
 import time
-import argparse
 
+import os
 import cv2 as cv  # pylint: disable=import-error
 import numpy as np  # pylint: disable=import-error
 import tensorflow as tf  # pylint: disable=import-error
 
 
-def get_args():
-    """parsing arguments"""
+root_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(
+    root_dir, os.path.normpath("model/model_float16_quant.tflite")
+)
+img_path = os.path.join(root_dir, os.path.normpath("img/portrait.png"))
+
+
+""""def get_args():
+    parsing arguments
     parser = argparse.ArgumentParser()
 
     parser.add_argument("--device", type=int, default=0)
@@ -31,11 +38,13 @@ def get_args():
     )
 
     args = parser.parse_args()
+    print(args)
 
     return args
+"""
 
 
-def run_inference(interpreter, input_size, image):
+def run_inference(interpreter, image, input_size=(512, 512)):
     """Pre process:Resize, BGR->RGB, PyTorch standardization, float32 cast"""
     temp_image = copy.deepcopy(image)
     img_u_mat = cv.imread(temp_image)
@@ -84,26 +93,21 @@ def resize_aspect_ratio(image, width=None, height=None, inter=cv.INTER_AREA):
     return cv.resize(image, dim, interpolation=inter)
 
 
-def main():
+def demo_main(image_path=img_path, show=True):
     """main function executing"""
-    args = get_args()
-    model_path = args.model
-    input_size = [int(i) for i in args.input_size.split(",")]
 
     # Load model
     interpreter = tf.lite.Interpreter(model_path=model_path)
     interpreter.allocate_tensors()
 
-    # elapsed_time = 0.0
-
     while True:
         start_time = time.time()
 
         # Capture read
-        image = "img/portrait.jpg"
+        image = image_path
         img_u_mat = cv.imread(image)
 
-        result_map = run_inference(interpreter, input_size, "img/portrait.jpg")
+        result_map = run_inference(interpreter, image_path)
         elapsed_time = time.time() - start_time
 
         # Inference elapsed time
@@ -128,15 +132,14 @@ def main():
 
         image_result = resize_aspect_ratio(debug_image, width=600)
         image = resize_aspect_ratio(img_u_mat, width=600)
-        cv.imshow("U-2-Net Original", image)
-        cv.imshow("U-2-Net Result", image_result)
-        key = cv.waitKey(1)
-        if key == 27:  # ESC
-            break
+
+        if show:
+            cv.imshow("U-2-Net Original", image)
+            cv.imshow("U-2-Net Result", image_result)
+            key = cv.waitKey(0)
+            if key == 27:  # ESC
+                break
+
+        return image_result
 
     # cap.release()
-    cv.destroyAllWindows()
-
-
-if __name__ == "__main__":
-    main()
