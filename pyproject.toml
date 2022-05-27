@@ -16,7 +16,7 @@ pylint = "^2.13.7"
 [tool.poetry.dev-dependencies]
 
 [tool.poetry.scripts]
-mydemo = 'demo:demo_main'
+mydemo = 'demo.demo:demo_main'
 
 [tool.setuptools.packages.find]
 py-modules = []

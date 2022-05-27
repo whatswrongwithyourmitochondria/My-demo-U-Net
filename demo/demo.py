@@ -7,6 +7,8 @@ import time
 import os
 import cv2 as cv  # pylint: disable=import-error
 import numpy as np  # pylint: disable=import-error
+
+# import pkg_resources
 import tensorflow as tf  # pylint: disable=import-error
 
 
@@ -95,7 +97,6 @@ def resize_aspect_ratio(image, width=None, height=None, inter=cv.INTER_AREA):
 
 def demo_main(image_path=img_path, show=True):
     """main function executing"""
-
     # Load model
     interpreter = tf.lite.Interpreter(model_path=model_path)
     interpreter.allocate_tensors()
