@@ -66,17 +66,21 @@ def resize_aspect_ratio(image, width=None, height=None, inter=cv.INTER_AREA):
     return cv.resize(image, dim, interpolation=inter)
 
 
-def demo_main(image_path=img_path, show=True):
+def demo_main(image_path=img_path, show=True, image_file=None):
     """main function executing"""
     # Load model
     interpreter = tf.lite.Interpreter(model_path=model_path)
     interpreter.allocate_tensors()
 
     start_time = time.time()
-
-    # Capture read
     image = image_path
-    img_u_mat = cv.imread(image)
+
+    if image_file is None:
+        # path to image
+        img_u_mat = cv.imread(image, cv.COLOR_BGR2RGB)
+    else:
+        # image from upload on streamlit
+        img_u_mat = cv.cvtColor(image_file, cv.COLOR_BGR2RGB)
 
     result_map = run_inference(interpreter, image_path)
     elapsed_time = time.time() - start_time
