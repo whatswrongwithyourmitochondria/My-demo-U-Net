@@ -12,12 +12,9 @@ import numpy as np  # pylint: disable=import-error
 import tensorflow as tf  # pylint: disable=import-error
 
 
-root_dir = os.path.dirname(os.path.abspath(__file__))
-model_path = os.path.join(
-    root_dir, os.path.normpath("model/model_float16_quant.tflite")
-)
-img_path = os.path.join(root_dir, os.path.normpath("img/portrait.png"))
-
+root_dir = os.path.dirname(__file__)
+model_path = os.path.normpath(root_dir + "/model/model_float16_quant.tflite")
+img_path = os.path.normpath(root_dir + "/img/portrait.png")
 
 """"def get_args():
     parsing arguments

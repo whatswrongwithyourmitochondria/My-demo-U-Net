@@ -48,4 +48,10 @@ to install a package from the console
 
  After you fix all the errors, make *git add / git commit* commands again. 
 
+ **Task 4**
+
+ In this task 2 tests are added:
+  - visual regression test, that checks our results are always the same
+  - a "no error" test, that shows our algorithm works with the images of different sizes
+
 
