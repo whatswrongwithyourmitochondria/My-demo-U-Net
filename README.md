@@ -69,6 +69,20 @@ You can scroll down and see Artifacts section. If needed, you can download a .zi
 
 <img src="https://github.com/whatswrongwithyourmitochondria/My-demo/blob/main/artifact.png" width="700"/>
 
+**Task 5**
+
+Web Demo for the project:
+
+Web Demo is created with help of *streamlit* library. It is a single page application that takes 
+image from a user and executes the demo code to draw the results in the browser. 
+
+You can find web_demo.py script in the */demo* folder.
+In order to run this app, install the package (use local version of */dist* folder) and then type `streamlit run web_demo.py` in */demo* folder. 
+
+Streamlit app will work at localhost:8501.
+
+You can choose .png image on your own and upload it.
+
 
 
 
