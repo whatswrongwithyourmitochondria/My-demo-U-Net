@@ -16,32 +16,6 @@ root_dir = os.path.dirname(__file__)
 model_path = os.path.normpath(root_dir + "/model/model_float16_quant.tflite")
 img_path = os.path.normpath(root_dir + "/img/portrait.png")
 
-""""def get_args():
-    parsing arguments
-    parser = argparse.ArgumentParser()
-
-    parser.add_argument("--device", type=int, default=0)
-    parser.add_argument("--movie", type=str, default=None)
-    parser.add_argument("--width", help="cap width", type=int, default=640)
-    parser.add_argument("--height", help="cap height", type=int, default=360)
-
-    parser.add_argument(
-        "--model",
-        type=str,
-        default="model/model_float16_quant.tflite",
-    )
-    parser.add_argument(
-        "--input_size",
-        type=str,
-        default="512,512",
-    )
-
-    args = parser.parse_args()
-    print(args)
-
-    return args
-"""
-
 
 def run_inference(interpreter, image, input_size=(512, 512)):
     """Pre process:Resize, BGR->RGB, PyTorch standardization, float32 cast"""

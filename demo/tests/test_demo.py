@@ -4,9 +4,8 @@ import cv2 as cv
 import demo
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
-root_dir = os.path.dirname(os.path.abspath("../tests"))
-img_path = os.path.normpath(root_dir + "/demo/img/portrait_result.png")
-img_path_original = os.path.normpath(root_dir + "/demo/img/portrait.png")
+img_path = os.path.abspath(base_dir + "/../img/portrait_result.png")
+img_path_original = os.path.abspath(base_dir + "/../img/portrait.png")
 
 
 def test_image_regression():
@@ -25,9 +24,5 @@ def test_image_regression():
 def test_no_error_big_small():
     """We should be sure that our algorithm works without
     any errors with the images of different sizes"""
-    demo.demo_main(
-        os.path.normpath(root_dir + "/demo/img/anastasia_big.png"), show=True
-    )
-    demo.demo_main(
-        os.path.normpath(root_dir + "/demo/img/anastasia_big.png"), show=True
-    )
+    demo.demo_main(os.path.normpath(base_dir + "/../img/anastasia_big.png"), show=True)
+    demo.demo_main(os.path.normpath(base_dir + "/../img/anastasia_big.png"), show=True)
