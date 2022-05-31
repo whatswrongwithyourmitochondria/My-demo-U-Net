@@ -35,14 +35,10 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         pip install -r requirements_prod.txt
         pip install -e .
-    - name: Lint with black
+    - name: Run style checks
       run: |
-        pip install black
-        black .
-    - name: Lint with pylint
-      run: |
-        pip install pylint
-        pylint .
+        pre-commit install
+        pre-commit run -a
     - name: Test with pytest
       run: |
         pytest
