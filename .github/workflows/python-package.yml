@@ -48,7 +48,7 @@ jobs:
     
     - name: Build the package
       run: |
-       mkdir dist
+        mkdir dist
         python -m pip install --upgrade build
         pip install build
         python -m build
@@ -57,6 +57,11 @@ jobs:
       with:
         name: demo
         path: dist
+        
+    - name: Download a single artifact aka python package
+      uses: actions/download-artifact@v3
+      with:
+        name: demo
 
     - name: Commit built files
       run: |
