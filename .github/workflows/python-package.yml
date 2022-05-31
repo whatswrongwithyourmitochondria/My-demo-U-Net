@@ -39,10 +39,15 @@ jobs:
       run: |
         pre-commit install
         pre-commit run -a
+        
     - name: Test with pytest
       run: |
         pytest
 
-    - name: Building the package
+    - name: Remove previous version of the package
+      run: rm -r dist
+    - name: Build the package
       run: |
-        poetry build
+        python -m pip install --upgrade pip
+        pip install build
+        python -m build
