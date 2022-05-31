@@ -49,6 +49,7 @@ jobs:
     - name: Build the package
       run: |
         mkdir dist
+        cd ./dist
         python -m pip install --upgrade build
         pip install build
         python -m build
