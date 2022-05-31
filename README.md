@@ -67,7 +67,7 @@ https://github.com/whatswrongwithyourmitochondria/My-demo/runs/6675396697
 
 You can scroll down and see Artifacts section. If needed, you can download a .zip archive:
 
-<img src="https://github.com/whatswrongwithyourmitochondria/My-demo/blob/main/artifact.png]" width="128"/>
+<img src="https://github.com/whatswrongwithyourmitochondria/My-demo/blob/main/artifact.png" width="128"/>
 
 
 
