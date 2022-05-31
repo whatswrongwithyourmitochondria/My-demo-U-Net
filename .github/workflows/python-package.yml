@@ -51,15 +51,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install build
         python -m build
-    - name: install package
+        
+    - name: Commit built files
       run: |
-        pip install demo-0.1.0.tar.gz
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add -A
+        git commit -m "A new version of package built via GitHub Actions"
         
-    - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v3
+    - name: Push to GitHub repository
+      uses: ad-m/github-push-action@master
       with:
-        name: built package
-      
-        
-    - name: Download all workflow run artifacts
-      uses: actions/download-artifact@v3
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
