@@ -24,5 +24,5 @@ def test_image_regression():
 def test_no_error_big_small():
     """We should be sure that our algorithm works without
     any errors with the images of different sizes"""
-    demo.demo_main(os.path.normpath(base_dir + "/../img/anastasia_big.png"), show=True)
-    demo.demo_main(os.path.normpath(base_dir + "/../img/anastasia_big.png"), show=True)
+    demo.demo_main(os.path.normpath(base_dir + "/../img/anastasia_big.png"), show=False)
+    demo.demo_main(os.path.normpath(base_dir + "/../img/anastasia_big.png"), show=False)

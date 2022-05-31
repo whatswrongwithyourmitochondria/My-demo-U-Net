@@ -72,46 +72,39 @@ def demo_main(image_path=img_path, show=True):
     interpreter = tf.lite.Interpreter(model_path=model_path)
     interpreter.allocate_tensors()
 
-    while True:
-        start_time = time.time()
+    start_time = time.time()
 
-        # Capture read
-        image = image_path
-        img_u_mat = cv.imread(image)
+    # Capture read
+    image = image_path
+    img_u_mat = cv.imread(image)
 
-        result_map = run_inference(interpreter, image_path)
-        elapsed_time = time.time() - start_time
+    result_map = run_inference(interpreter, image_path)
+    elapsed_time = time.time() - start_time
 
-        # Inference elapsed time
-        elapsed_time_text = "Elapsed time: "
-        elapsed_time_text += str(round((elapsed_time * 1000), 1))
-        elapsed_time_text += "ms"
-        cv.putText(
-            img_u_mat,
-            elapsed_time_text,
-            (10, 30),
-            cv.FONT_HERSHEY_SIMPLEX,
-            0.7,
-            (0, 255, 0),
-            1,
-            cv.LINE_AA,
-        )
+    # Inference elapsed time
+    elapsed_time_text = "Elapsed time: "
+    elapsed_time_text += str(round((elapsed_time * 1000), 1))
+    elapsed_time_text += "ms"
+    cv.putText(
+        img_u_mat,
+        elapsed_time_text,
+        (10, 30),
+        cv.FONT_HERSHEY_SIMPLEX,
+        0.7,
+        (0, 255, 0),
+        1,
+        cv.LINE_AA,
+    )
 
-        # Map Resize
-        debug_image = cv.resize(
-            result_map, dsize=(img_u_mat.shape[1], img_u_mat.shape[0])
-        )
+    # Map Resize
+    debug_image = cv.resize(result_map, dsize=(img_u_mat.shape[1], img_u_mat.shape[0]))
 
-        image_result = resize_aspect_ratio(debug_image, width=600)
-        image = resize_aspect_ratio(img_u_mat, width=600)
+    image_result = resize_aspect_ratio(debug_image, width=600)
+    image = resize_aspect_ratio(img_u_mat, width=600)
 
-        if show:
-            cv.imshow("U-2-Net Original", image)
-            cv.imshow("U-2-Net Result", image_result)
-            key = cv.waitKey(0)
-            if key == 27:  # ESC
-                break
+    if show:
+        cv.imshow("U-2-Net Original", image)
+        cv.imshow("U-2-Net Result", image_result)
+        cv.waitKey(0)
 
-        return image_result
-
-    # cap.release()
+    return image_result
