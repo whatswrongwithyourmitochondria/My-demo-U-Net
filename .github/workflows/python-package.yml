@@ -39,12 +39,10 @@ jobs:
       run: |
         pip install black
         black .
-        ...
     - name: Lint with pylint
       run: |
         pip install pylint
         pylint .
-        ...
     - name: Test with pytest
       run: |
         pytest
