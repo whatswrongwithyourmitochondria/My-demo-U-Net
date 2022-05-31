@@ -14,10 +14,6 @@ jobs:
 
     runs-on: ubuntu-latest
     
-    defaults:
-      run:
-        working-directory: ./demo
-        
     strategy:
       fail-fast: false
       matrix:
@@ -46,6 +42,7 @@ jobs:
         pre-commit run -a
         
     - name: Test with pytest
+      working-directory: ./demo
       run: |
         pytest
 
