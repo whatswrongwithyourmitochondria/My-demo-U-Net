@@ -15,7 +15,7 @@ def main():
         # To read file as bytes:
         image = Image.open(uploaded_file)
         img_array = np.array(image)
-        result = demo_main(image_file=img_array, show=True)
+        result = demo_main(image_file=img_array, show=False)
         st.image(result, caption="")
 
 
