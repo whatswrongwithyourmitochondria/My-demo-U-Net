@@ -53,5 +53,25 @@ to install a package from the console
  In this task 2 tests are added:
   - visual regression test, that checks our results are always the same
   - a "no error" test, that shows our algorithm works with the images of different sizes
+  
+ To check how CI works, follow the link below:
+
+https://github.com/whatswrongwithyourmitochondria/My-demo/actions
+
+CI installs dependencies, runs style checks (with the help of pre-commit that hooks *black* and *pylint* tools), tests code with pytest 
+and then makes build and pushes it to the Artifacts.
+
+You can also check artifacts selecting job in actions, e.g.:
+
+https://github.com/whatswrongwithyourmitochondria/My-demo/runs/6675396697
+
+You can scroll down and see Artifacts section. If needed, you can download a .zip archive:
+
+
+
+
+
+
+
 
 
