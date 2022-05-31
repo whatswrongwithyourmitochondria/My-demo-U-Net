@@ -21,7 +21,7 @@ RUN python3.9 -m pip install --upgrade pip \
 
 COPY requirements_prod.txt requirements_prod.txt
 RUN pip3 install -r requirements_prod.txt
-COPY demo/dist/demo-0.1.0-py3-none-any.whl .
+COPY dist/demo-0.1.0-py3-none-any.whl .
 RUN  python3.9 -m pip install demo-0.1.0-py3-none-any.whl
 
 
