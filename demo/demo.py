@@ -95,8 +95,11 @@ def demo_main(image_path=img_path, show=True, image_data=None):
         1,
         cv.LINE_AA,
     )
-
-    image_result = resize_aspect_ratio(result_map, width=600)
+    # Map Resize
+    resized_image = cv.resize(
+        result_map, dsize=(image_data.shape[1], image_data.shape[0])
+    )
+    image_result = resize_aspect_ratio(resized_image, width=600)
     image_original = resize_aspect_ratio(image_data, width=600)
 
     if show:
@@ -104,4 +107,4 @@ def demo_main(image_path=img_path, show=True, image_data=None):
         cv.imshow("U-2-Net Result", image_result)
         cv.waitKey(0)
 
-    return result_map
+    return image_result
