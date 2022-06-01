@@ -13,9 +13,9 @@ def main():
     uploaded_file = st.file_uploader("Choose a file")
     if uploaded_file is not None:
         # To read file as bytes:
-        image = Image.open(uploaded_file)
-        img_array = np.array(image)
-        result = demo_main(image_file=img_array, show=False)
+
+        image = np.array(Image.open(uploaded_file))
+        result = demo_main(image_data=image, show=False)
         st.image(result, caption="")
 
 
