@@ -1,13 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """importing modules"""
-import time
 
 import os
 import cv2 as cv  # pylint: disable=import-error
 import numpy as np  # pylint: disable=import-error
-
-# import pkg_resources
 import tensorflow as tf  # pylint: disable=import-error
 
 
@@ -72,29 +69,11 @@ def demo_main(image_path=img_path, show=True, image_data=None):
     interpreter = tf.lite.Interpreter(model_path=model_path)
     interpreter.allocate_tensors()
 
-    start_time = time.time()
-
     if image_data is None:
         image_data = cv.imread(image_path)
 
     result_map = run_inference(interpreter, image_data)
 
-    elapsed_time = time.time() - start_time
-
-    # Inference elapsed time
-    elapsed_time_text = "Elapsed time: "
-    elapsed_time_text += str(round((elapsed_time * 1000), 1))
-    elapsed_time_text += "ms"
-    cv.putText(
-        result_map,
-        elapsed_time_text,
-        (10, 30),
-        cv.FONT_HERSHEY_SIMPLEX,
-        0.7,
-        (0, 255, 0),
-        1,
-        cv.LINE_AA,
-    )
     # Map Resize
     resized_image = cv.resize(
         result_map, dsize=(image_data.shape[1], image_data.shape[0])
