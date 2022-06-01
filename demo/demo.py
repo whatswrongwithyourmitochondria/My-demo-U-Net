@@ -96,9 +96,11 @@ def demo_main(image_path=img_path, show=True, image_data=None):
         cv.LINE_AA,
     )
 
-    # Map Resize
+    image_resized = cv.resize(
+        result_map, dsize=(image_data.shape[1], image_data.shape[0])
+    )
 
-    image_result = resize_aspect_ratio(result_map, width=600)
+    image_result = resize_aspect_ratio(image_resized, width=600)
     image_original = resize_aspect_ratio(image_data, width=600)
 
     if show:
