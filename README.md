@@ -20,7 +20,10 @@
  
 ## Task 2
 
-**To be able to build a package from the code:**
+First, if you don't have a *build* package, let's install it via command `pythom -m pip install build`
+
+Second, To be able to build a package from the code:
+
 1. `poetry build`
 2. cd ./dist
 3. pip install <source file> (`pip install demo-0.1.0.tar.gz`)
