@@ -22,7 +22,7 @@
 
 First, if you don't have a *build* package, let's install it via command `pythom -m pip install build`
 
-Second, To be able to build a package from the code:
+Second, to be able to build a package from the code:
 
 1. `poetry build`
 2. cd ./dist
@@ -91,7 +91,7 @@ You can choose .png image on your own and upload it.
 
 **Docker image**
 
-First, you need to install *Docker* to your system.
+First, you need to install *Docker* to your system. 
 
 Second, run `docker build -t unet ./`
 
@@ -100,6 +100,8 @@ After building, use the following command
 `docker run -p 8501:8501 unet`
 
 and you'll see a web demo at *localhost:8501*
+
+Take into account, that you may need to run those commands as administrator, otherwise access will be denied. 
 
 
 
