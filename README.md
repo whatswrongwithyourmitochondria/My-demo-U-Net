@@ -102,11 +102,3 @@ After building, use the following command
 and you'll see a web demo at *localhost:8501*
 
 Take into account, that you may need to run those commands as administrator, otherwise access will be denied. 
-
-
-
-
-
-
-
-
