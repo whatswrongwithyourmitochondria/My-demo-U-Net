@@ -8,7 +8,7 @@
 - if you install *poetry* using **pip**, be aware that it will also install Poetry’s dependencies which might cause conflicts with other packages
 
 
-**Task 1**
+## Task 1
 
 **Follow these steps to run the project:**
  1. Go to My-demo directory
@@ -18,9 +18,12 @@
  5. Then press *exit* to leave the shell
  
  
-**Task 2**
+## Task 2
 
-**To be able to build a package from the code:**
+First, if you don't have a *build* package, let's install it via command `pythom -m pip install build`
+
+Second, to be able to build a package from the code:
+
 1. `poetry build`
 2. cd ./dist
 3. pip install <source file> (`pip install demo-0.1.0.tar.gz`)
@@ -29,7 +32,7 @@
 **USE** `pip install git+https://github.com/whatswrongwithyourmitochondria/My-demo`
 to install a package from the console 
 
-**Task 3**
+## Task 3
 
  - Styling tools such as *black* and *pylint* were added.
  - *pre-commit* tool is used while making commits and has been configured to use styling tools mentioned above. 
@@ -48,11 +51,14 @@ to install a package from the console
 
  After you fix all the errors, make *git add / git commit* commands again. 
 
- **Task 4**
+ ## Task 4
 
  In this task 2 tests are added:
   - visual regression test, that checks our results are always the same
   - a "no error" test, that shows our algorithm works with the images of different sizes
+
+ To run tests, use the following command:
+ `pytest` or `python -m pytest`
   
  To check how CI works, follow the link below:
 
@@ -69,7 +75,7 @@ You can scroll down and see Artifacts section. If needed, you can download a .zi
 
 <img src="https://github.com/whatswrongwithyourmitochondria/My-demo/blob/main/artifact.png" width="700"/>
 
-**Task 5**
+## Task 5
 
 **Web Demo for the project:**
 
@@ -85,7 +91,7 @@ You can choose .png image on your own and upload it.
 
 **Docker image**
 
-First, you need to install *Docker* to your system.
+First, you need to install *Docker* to your system. 
 
 Second, run `docker build -t unet ./`
 
@@ -94,6 +100,8 @@ After building, use the following command
 `docker run -p 8501:8501 unet`
 
 and you'll see a web demo at *localhost:8501*
+
+Take into account, that you may need to run those commands as administrator, otherwise access will be denied. 
 
 
 
